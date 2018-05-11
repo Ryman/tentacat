@@ -50,4 +50,19 @@ defmodule Tentacat.Search do
   def repositories(client \\ %Client{}, params, options \\ []) do
     get("search/repositories", client, params, options)
   end
+
+  @doc """
+  Searches for issues or pull requests
+
+  ## Example
+
+      Tentacat.Search.issues %{q: "elixir-lang language:elixir", sort: "comments"}
+      Tentacat.Search.issues %{q: "elixir-lang language:elixir", sort: "comments"}, client
+
+  More info at: https://developer.github.com/v3/search/#search-issues
+  """
+  @spec issues(Client.t(), any, Keyword.t()) :: Tentacat.response()
+  def issues(client \\ %Client{}, params, options \\ []) do
+    get("search/issues", client, params, options)
+  end
 end
